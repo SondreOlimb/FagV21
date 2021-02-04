@@ -1,4 +1,4 @@
-##Code for assignments at 6.semester at Elsys NTNU 
+#Code for assignments at 6.semester at Elsys NTNU 
 
 
 ##Cloning repository
@@ -20,7 +20,7 @@
    python -m venv Name-Of-Venv
    ```
     ```
-   Name-Of-Venv/Scripts/activate
+   source Name-Of-Venv/Scripts/activate
    ```
 
 3. Install requirements:
