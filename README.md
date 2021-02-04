@@ -1,4 +1,4 @@
-#Code for assignments at 6.semester at Elsys NTNU 
+#Code for assignments 6.semester at Elsys NTNU 
 
 
 ##Cloning repository
