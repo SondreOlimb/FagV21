@@ -1,7 +1,7 @@
-#Code for assignments 6.semester at Elsys NTNU 
+# Code for assignments 6.semester at Elsys NTNU 
 
 
-##Cloning repository
+## Cloning repository
 1. clone the repository:
 
     HTTPS:
