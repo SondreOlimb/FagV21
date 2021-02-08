@@ -16,7 +16,7 @@ m_uten = np.mean(T_uten)
 
 
 
-def StandardDeviation(messurments, mean):
+def Variance(messurments, mean):
     std = 0
 
     for i in messurments:
@@ -24,8 +24,8 @@ def StandardDeviation(messurments, mean):
     std = std/(N-1)
     return std
 
-var_T_med = StandardDeviation(T_med, m_med)
-var_T_uten = StandardDeviation(T_uten, m_uten)
+var_T_med = Variance(T_med, m_med)
+var_T_uten = Variance(T_uten, m_uten)
 
 print("variance by fromula for T_med:",var_T_med)
 print("Variance calculated by np.var for T_med:",np.var(T_med,ddof=1))
@@ -35,11 +35,17 @@ print("variance by formula for T_uten:",var_T_uten)
 print("Variance calculated by np.var for T_med:",np.var(T_uten,ddof=1))
 
 
-var_alfa = (24*np.log(10*V)/(c*S))**2*(var_T_med+var_T_uten)
+a=(24*np.log(10*V)/(c*S))*(1/T_med-1/T_uten)
 
+
+
+var_alfa=np.mean((24*np.log(10*V)/(c*S))**2*((1/T_med**4)*var_T_med+1/T_uten**4*var_T_uten))
 std_alfa = np.sqrt(var_alfa)
 
+
 print("standard deviation for alfa is:",std_alfa)
+
+
 
 
 
@@ -47,7 +53,7 @@ print("standard deviation for alfa is:",std_alfa)
 Oppg 1c
 """
 
-alfa = (24*np.log(10*V)/(c*S))*(1/T_med+1/T_uten)
+alfa = (24*np.log(10*V)/(c*S))*(1/T_med-1/T_uten)
 
 mean_alfa =np.mean(alfa)
 
@@ -63,17 +69,19 @@ def CondifenceInterval(mean,t_p,S,n):
     :return: returns the upper en lower limit of the student t distibution
     """
     lower = mean - t_p*S/np.sqrt(n)
-    upper = mean + t_p * S / np.sqrt(n)
+    upper = mean + t_p *S/ np.sqrt(n)
+
+
 
 
     return lower,upper
 
 
-alfa_Lower,alfa_Upper = CondifenceInterval(mean_alfa,2.365,np.sqrt(std_alfa),8)
+alfa_Lower,alfa_Upper = CondifenceInterval(mean_alfa,2.365,std_alfa,8)
 
 
 
 print("\n Mean of alfa:",round(mean_alfa,3))
-print("Konfidensintervall: [",round(alfa_Lower,3), round(alfa_Upper,3),"]")
+print("Konfidensintervall: [",round(alfa_Lower,5), round(alfa_Upper,5),"]")
 
 
